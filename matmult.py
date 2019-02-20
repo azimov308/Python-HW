@@ -3,6 +3,16 @@ import sys
 '''
 Matrix1
 '''
+<<<<<<< HEAD
+=======
+
+
+''' NEED THIS
+try:
+except:
+'''
+
+>>>>>>> master
 #Input for size of matrix1
 x1, y1 = raw_input().split()
 #Convert to int values
