@@ -1,20 +1,38 @@
 rpn = []
 userInput = 0
+con = 1
 
-while (type(userInput) == int):    #while the input is of int
-    userInput = input()            #set the input to a name
-    rpn.append(int(userInput))     #add the userInput to the end of rpn list
-    if (type(userInput) == "+"):   #if userInput is of type "+"
-        var1 = rpn.pop()           #pop var1 from end of the list
-        var2 = rpn.pop()           #pop var2 from end of the list
-        rpn.append(var1+var2)      #add the result of 'var1+var2' to end of list
-        print(int(var1+var2)       #print result from ^
-    elif (type(userInput) == "-"): #elseif the user inputs "-"
-        var1 = rpn.pop()           #pop var1 from end of the list
-        var2 = rpn.pop()           #pop var2 from end of the list
-        rpn.append(var1 - var2)    #add the result of 'var1-var2' to end of list
-        print(int(var1 - var2))    #print result from ^
-    else:
-        print("invalid input")
-
-print('hello')
+while(con == 1):
+  userInput = raw_input()
+  try:
+    userInput = int(userInput)
+    rpn.append(userInput)
+  except ValueError:
+    if not rpn:
+        print("invalid")
+    elif (len(rpn)>1 and userInput== "+"):
+        var1 = rpn.pop()
+        var2 = rpn.pop()
+        rpn.append(var1+var2)
+        print(int(var1+var2))
+    elif (len(rpn)>1 and userInput == "-"):
+        var1 = rpn.pop()
+        var2 = rpn.pop()
+        rpn.append(var2-var1)
+        print(int(var2-var1))
+    elif (len(rpn)>1 and userInput == "*"):
+        var1 = rpn.pop()
+        var2 = rpn.pop()
+        rpn.append(var1*var2)
+        print(int(var1*var2))
+    elif (len(rpn)>1 and userInput == "/"):
+        var1 = rpn.pop()
+        var2 = rpn.pop()
+        rpn.append(var1/var2)
+        print(int(var1/var2))
+    elif (userInput == "~"):
+        var1 = rpn.pop()
+        rpn.append(var1*-1)
+        print(int(var1*-1))
+    elif (type(userInput) != int):
+            print("invalid")

@@ -4,6 +4,10 @@ import sys
 Matrix1
 '''
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> master
 
 
 ''' NEED THIS
@@ -11,7 +15,10 @@ try:
 except:
 '''
 
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> master
 >>>>>>> master
 #Input for size of matrix1
 x1, y1 = raw_input().split()
