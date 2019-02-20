@@ -1,27 +1,14 @@
 import sys
 
+
 '''
 Matrix1
 '''
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> master
-
-
-''' NEED THIS
-try:
-except:
-'''
-
-<<<<<<< HEAD
-=======
-=======
->>>>>>> master
->>>>>>> master
 #Input for size of matrix1
-x1, y1 = raw_input().split()
+try:
+    x1, y1 = raw_input().split()
+except:
+    pass
 #Convert to int values
 x1, y1 = [int(x1), int(y1)]
 
@@ -36,7 +23,7 @@ while count1 != 0:
     matrix1.append(new_list)
     count1 = count1 - 1
 
-print(matrix1)
+#print(matrix1)
 
 
 '''
@@ -46,6 +33,10 @@ Matrix2
 x2, y2 = raw_input().split()
 #Convert to int values
 x2, y2 = [int(x2), int(y2)]
+#Testcase to see if you can multiply
+if y1 != x2:
+    print("invalid input")
+    exit()
 
 matrix2 = []
 count2 = x2
@@ -58,15 +49,7 @@ while count2 != 0:
     matrix2.append(new_list2)
     count2 = count2 - 1
 
-print(matrix2)
-
-
-'''
-Testcase to see if you can multiply
-'''
-if y1 != x2:
-    print("invalid input")
-    exit()
+#print(matrix2)
 
 
 '''
