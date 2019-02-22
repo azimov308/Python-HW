@@ -1,14 +1,12 @@
-# Python program to demonstrate insert operation in binary search tree
-
-# A utility class that represents an individual node in a BST
 class Node:
-    def __init__(self,key):
+    def __init__(self, key):
         self.left = None
         self.right = None
+        self.parent = None
         self.val = key
 
-# A utility function to insert a new node with the given key
-def insert(root, node):
+
+def insertNode(root, node):
     if root is None:
         root = node
     else:
@@ -16,70 +14,64 @@ def insert(root, node):
             if root.right is None:
                 root.right = node
             else:
-                insert(root.right, node)
+                insertNode(root.right, node)
         else:
             if root.left is None:
                 root.left = node
             else:
-                insert(root.left, node)
+                insertNode(root.left, node)
 
 
-list = []
-def search(root, node):
-    if(root is not None):
-        print(root.val)
-    #print(root.right)
-    if root is None or root.val == node:
-        print("2")
+
+def search(root, key):
+    if root is None:
+        print("not found")
+    if root.val == key and len(list) > 0:
+        print("found: " + ' '.join(map(str, list)))
         return root
-    elif root.val < node:
-        print("3")
+    elif root.val < key:
         list.append("r")
-        #print(node.val)
-        return search(root.right, node)
-    else:
-        print("4")
+        return search(root.right, key)
+    elif root.val > key:
         list.append("l")
-        return search(root.left, node)
+        return search(root.left, key)
+    elif len(list) == 0 and root.val == key:
+        print("found root")
 
-
-
-# Driver program to test the above functions
-# Let us create the following BST
-#      50
-#    /      \
-#   30     70
-#   / \    / \
-#  20 40  60 80
-
-'''
-r = Node(50)
-insert(r,Node(30))
-insert(r,Node(20))
-insert(r,Node(40))
-insert(r,Node(70))
-insert(r,Node(60))
-insert(r,Node(80))
-'''
 
 cont = 1
-
-while cont == 1:
-    try:
-        command, value = raw_input().split()
-        root = None
-        if root == None:
-            root = Node(value)
-    except:
-        pass
-    command, value = [str(command), int(value)]
-    if command == 'i':
-        insert(root, Node(value))
-    elif command == 'q':
-        search(root, value)
-
-
-
-
-# Print inoder traversal of the BST
-#inorder(r)
+command = ''
+value = None
+while (True):
+        command = input()
+        try:
+            command, value= command.split()
+            if firstroot is None:
+                firstroot = value
+        except:
+            if(command == "quit"):
+                break
+        try:
+            value = int(value)
+            if(value is None):
+                #print("invalid")
+                pass
+            elif command == "i":
+                try:
+                    insertNode(r,Node(value))
+                    #print("inserted Node")
+                except:
+                    r = Node(value)
+                    #print("Made root")
+            elif command == "q":
+                try:
+                    list = []
+                    search(r, value)
+                except:
+                    pass
+            else:
+                #print("invalid")
+                pass
+        except:
+                #print("value needs to be a number")
+                pass

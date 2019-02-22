@@ -2,6 +2,7 @@ class Node:
     def __init__(self, key):
         self.left = None
         self.right = None
+        self.parent = None
         self.val = key
 
 
@@ -21,23 +22,28 @@ def insertNode(root, node):
                 insertNode(root.left, node)
 
 
-list = []
+
 def search(root, key):
-    if(root is not None):
-        print(root.val)
-    #print(root.right)
-    if root is None or root.val == key:
-        print("2")
+    #if  == None:
+        #root.parent = root.parent.key
+        #print("found: root")
+    #if root.val == key:
+        #print("found root")
+    if root is None:
+        print("not found")
+    if root.val == key and len(list) > 0:
+        print("found: " + ' '.join(map(str, list)))
         return root
     elif root.val < key:
-        print("3")
         list.append("r")
-        #print(node.val)
         return search(root.right, key)
-    else:
-        print("4")
+    elif root.val > key:
         list.append("l")
         return search(root.left, key)
+    elif len(list) == 0 and root.val == key:
+        print("found root")
+    #if root != key:
+        #print("not found")
 
 
 def inorder(root):
@@ -49,28 +55,36 @@ def inorder(root):
 
 cont = 1
 command = ''
-
+value = None
 while (True):
         command = input()
         try:
             command, value= command.split()
+            if firstroot is None:
+                firstroot = value
         except:
             if(command == "quit"):
                 break
-
-        if command == "i":
-            try:
-                insertNode(r,Node(value))
-                print("inserted Node")
-            except:
-                r = Node(value)
-                print("Made root")
-        elif command == "q":
-            try:
-                searchNode(r, value)
-            except:
-                print("Tree not started")
-        else:
-            print("invalid")
+        try:
+            value = int(value)
+            if(value is None):
+                print("invalid")
+            elif command == "i":
+                try:
+                    insertNode(r,Node(value))
+                    #print("inserted Node")
+                except:
+                    r = Node(value)
+                    #print("Made root")
+            elif command == "q":
+                try:
+                    list = []
+                    search(r, value)
+                except:
+                    pass
+            else:
+                print("invalid")
+        except:
+                print("value needs to be a number")
 
 inorder(r)
