@@ -63,6 +63,7 @@ insert(r,Node(80))
 '''
 
 cont = 1
+command = ''
 
 while cont == 1:
     try:
